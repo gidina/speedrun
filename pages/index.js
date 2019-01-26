@@ -1,4 +1,6 @@
+import { connect } from 'react-redux'
 import fetch from 'isomorphic-unfetch';
+
 import "../styles.css";
 
 const Home = (props) => (
@@ -15,13 +17,19 @@ const Home = (props) => (
     </div>
 );
 
-Home.getInitialProps = async () => {
+Home.getInitialProps = async ({ reduxStore }) => {
     const res = await fetch('https://www.speedrun.com/api/v1/games');
     const result = await res.json();
 
-    return {
-        games: result.data
-    };
+    reduxStore.dispatch({ type: 'FETCH_GAMES_SUCCESS', games: result.data });
+
+    return {};
 };
 
-export default Home;
+const mapStateToProps = (state) => {
+    return {
+        games: state.games
+    }
+};
+
+export default connect(mapStateToProps, null)(Home);
