@@ -1,22 +1,39 @@
 import fetch from 'isomorphic-unfetch';
 
 const Game = (props) => {
-    const firstRun = props.firstRun;
+    const { name, logoUrl, firstRun } = props;
     const firstPlayer = firstRun.players[0];
     return <div>
-        <h1>{firstPlayer.id} Name</h1>
-        <button>{firstRun.videos.links[0].uri} Video</button>
+        <h1>Game name: {name}</h1>
+        <div>Game logo: <img alt="" src={logoUrl} /></div>
+        <button>Game video url: {firstRun.videos.links[0].uri} Video</button>
+        <div>Player id: {firstPlayer.id}</div>
         <h5>{firstRun.times.primary_t}</h5>
-        <div>game logo</div>
-        <div>game name {props.id}</div>
     </div>
 };
 
 Game.getInitialProps = async (context) => {
+
     const { id } = context.query;
-    // const res = await fetch(`https://www.speedrun.com/api/v1/runs?game=${id}`);
-    // const result = await res.json();
-    const result = {
+    const games = context.reduxStore.getState().games;
+
+    if (games.length !== 0) {
+        const filterByID = (obj) => obj.id === id;
+        const selectedGame = games.filter(filterByID)[0];
+        const res = await fetch(selectedGame.links[1].uri);
+        const result = await res.json();
+        const gameRuns = result.data;
+        const firstRun = gameRuns[0];
+
+        return {
+            id, 
+            name: selectedGame.names.international, 
+            logoUrl: selectedGame.assets['cover-small'].uri,
+            firstRun
+        };
+    }
+    
+    const resultFake = {
         data: [
             {
                 id: "7z0nvdem",
@@ -41,10 +58,10 @@ Game.getInitialProps = async (context) => {
             }
         ]
     };
-    const gameRuns = result.data;
+    const gameRuns = resultFake.data;
     const firstRun = gameRuns[0];
 
-    return { firstRun, id };
+    return { id, name: 'test-name', logoUrl: 'test logo url', firstRun };
 };
 
 export default Game
