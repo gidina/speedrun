@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-import fetch from 'isomorphic-unfetch';
 import Link from 'next/link';
-import { fetchGamesSuccess } from "../store/actions";
+import { fetchGames } from "../store/actions";
 
 import "../styles.css";
 
@@ -22,16 +21,7 @@ const Home = (props) => (
 );
 
 Home.getInitialProps = async ({ reduxStore }) => {
-    const games = reduxStore.getState().games;
-
-    if (games.length === 0) {
-        const res = await fetch('https://www.speedrun.com/api/v1/games');
-        const result = await res.json();
-        const games = result.data;
-
-        reduxStore.dispatch(fetchGamesSuccess(games));
-    }
-
+    await reduxStore.dispatch(fetchGames());
     return {};
 };
 
