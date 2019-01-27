@@ -22,11 +22,15 @@ const Home = (props) => (
 );
 
 Home.getInitialProps = async ({ reduxStore }) => {
-    const res = await fetch('https://www.speedrun.com/api/v1/games');
-    const result = await res.json();
-    const games = result.data;
+    const games = reduxStore.getState().games;
 
-    reduxStore.dispatch(fetchGamesSuccess(games));
+    if (games.length === 0) {
+        const res = await fetch('https://www.speedrun.com/api/v1/games');
+        const result = await res.json();
+        const games = result.data;
+
+        reduxStore.dispatch(fetchGamesSuccess(games));
+    }
 
     return {};
 };
