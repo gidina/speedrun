@@ -1,7 +1,10 @@
-import fetch from 'isomorphic-unfetch';
+import { connect } from 'react-redux';
+import { fetchGames, fetchRuns } from "../store/actions";
+import { getGames, getRuns, getSelectedGame } from "../store/reducers";
 
 const Game = (props) => {
-    const { name, logoUrl, firstRun } = props;
+    const { selectedGame } = props;
+    const { name, logoUrl, firstRun } = selectedGame;
     const firstPlayer = firstRun.players[0];
     return <div>
         <h1>Game name: {name}</h1>
@@ -15,58 +18,37 @@ const Game = (props) => {
 Game.getInitialProps = async (context) => {
 
     const { id } = context.query;
-    const games = context.reduxStore.getState().games;
+    const games = getGames(context.reduxStore.getState());
 
     if (games.length !== 0) {
         const filterByID = (obj) => obj.id === id;
         const selectedGame = games.filter(filterByID)[0];
 
         const filterByRel = (obj) => obj.rel === 'runs';
-        const linkToRuns = selectedGame.links.filter(filterByRel)[0];
-        
-        const res = await fetch(linkToRuns);
-        const result = await res.json();
+        const linkToRuns = selectedGame.links.filter(filterByRel)[0].uri;
 
-        const gameRuns = result.data;
-        const firstRun = gameRuns[0];
-
-        return {
-            id, 
-            name: selectedGame.names.international, 
-            logoUrl: selectedGame.assets['cover-small'].uri,
-            firstRun
-        };
+        await context.reduxStore.dispatch(fetchRuns(linkToRuns));
+        return { id };
     }
-    
-    const resultFake = {
-        data: [
-            {
-                id: "7z0nvdem",
-                game: "k6qqkx6g",
-                videos: {
-                    links: [
-                        {
-                            uri: "https://youtu.be/-Vesbd8uJzE"
-                        }
-                    ]
-                },
-                players: [
-                    {
-                        rel: "user",
-                        id: "mkj9nw84",
-                        uri: "https://www.speedrun.com/api/v1/users/mkj9nw84"
-                    }
-                ],
-                times: {
-                    primary_t: 435,
-                }
-            }
-        ]
-    };
-    const gameRuns = resultFake.data;
-    const firstRun = gameRuns[0];
 
-    return { id, name: 'test-name', logoUrl: 'test logo url', firstRun };
+    await context.reduxStore.dispatch(fetchGames());
+
+    const games2 = getGames(context.reduxStore.getState());
+
+    const filterByID2 = (obj) => obj.id === id;
+    const selectedGame2 = games2.filter(filterByID2)[0];
+
+    const filterByRel2 = (obj) => obj.rel === 'runs';
+    const linkToRuns2 = selectedGame2.links.filter(filterByRel2)[0].uri;
+
+    await context.reduxStore.dispatch(fetchRuns(linkToRuns2));
+    return { id };
 };
 
-export default Game
+const mapStateToProps = (state, props) => {
+    return {
+        selectedGame: getSelectedGame(state, props.id)
+    }
+};
+
+export default connect(mapStateToProps, null)(Game);

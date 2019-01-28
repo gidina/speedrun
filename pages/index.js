@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 import Link from 'next/link';
 import { fetchGames } from "../store/actions";
+import { getGames } from "../store/reducers";
 
 import "../styles.css";
 
@@ -27,7 +28,7 @@ Home.getInitialProps = async ({ reduxStore }) => {
 
 const mapStateToProps = (state) => {
     return {
-        games: state.games
+        games: getGames(state)
     }
 };
 
