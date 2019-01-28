@@ -20,8 +20,13 @@ Game.getInitialProps = async (context) => {
     if (games.length !== 0) {
         const filterByID = (obj) => obj.id === id;
         const selectedGame = games.filter(filterByID)[0];
-        const res = await fetch(selectedGame.links[1].uri);
+
+        const filterByRel = (obj) => obj.rel === 'runs';
+        const linkToRuns = selectedGame.links.filter(filterByRel)[0];
+        
+        const res = await fetch(linkToRuns);
         const result = await res.json();
+
         const gameRuns = result.data;
         const firstRun = gameRuns[0];
 
