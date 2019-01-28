@@ -16,7 +16,20 @@ const games = (state = initialState, action) => {
 export default games;
 
 const findByID = (obj, id) => obj.id === id;
+const findByRel = (obj, rel) => obj.rel === rel;
 export const getGames = state => state;
+export const areGamesLoaded = state => state.length !== 0;
+export const getRunsUrl = (state, id) => {
+    const game = getGameById(state, id);
+
+    if (!game) return;
+
+    const link = game.links.find(link => findByRel(link, 'runs'));
+    
+    if (!link) return;
+    
+    return link.uri;
+};
 export const getGameById = (state, id) => {
     return state.find((game) => findByID(game, id))
 };

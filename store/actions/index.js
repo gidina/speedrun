@@ -5,6 +5,7 @@ import {
     FETCH_RUNS_SUCCESS, 
     FETCH_RUNS_ERROR 
 } from "./actionTypes";
+import { areGamesLoaded, getRunsUrl } from "../reducers";
 
 const fetchGamesSuccess = games => ({ type: FETCH_GAMES_SUCCESS, games });
 const fetchGamesError = error => ({ type: FETCH_GAMES_ERROR, error });
@@ -45,3 +46,15 @@ export const fetchRuns = (url) => {
         }
     };
 };
+
+export const fetchGamesAndRuns = id => {
+    return async (dispatch, getState) => {
+        
+        if (!areGamesLoaded(getState())) {
+            await dispatch(fetchGames());
+        }
+
+        const runsUrl = getRunsUrl(getState(), id);
+        await dispatch(fetchRuns(runsUrl));
+    };
+}
