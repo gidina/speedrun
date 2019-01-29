@@ -1,12 +1,13 @@
 {
-    "env":{
-      "development": {},
-      "production": {},
-      "test": {
-        "plugins": [
-          ["transform-es2015-modules-commonjs"]
-        ],
-        "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
-      }
+  "env":{
+    "development": {},
+    "production": {},
+    "test": {
+      "plugins": [
+        ["transform-es2015-modules-commonjs"]
+      ],
+      "presets": [["next/babel", { "preset-env": { "modules": "commonjs" } }]]
     }
   }
+}
+  
