@@ -3,17 +3,17 @@ import Link from 'next/link';
 import { fetchGames } from "../store/actions";
 import { getGames } from "../store/reducers";
 
-import "../styles.css";
+import "./index.css";
 
 const Home = (props) => (
     <div>
-        <h1 className="test-css">Games</h1>
-        <ul>
+        <h1 className="games-title">Games</h1>
+        <ul className="games-list">
             {props.games.map((game) => (
-                <li key={game.id}>
-                    <img alt="" src={game.assets['cover-small'].uri} />
+                <li key={game.id} className="game">
+                    <img alt="" className="game-img" src={game.assets['cover-small'].uri} />
                     <Link as={`/game/${game.id}`} href={`/game?id=${game.id}`}>
-                        <a>{game.names.international}</a>
+                        <a className="game-title">{game.names.international}</a>
                     </Link>
                 </li>
             ))}
