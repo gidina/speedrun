@@ -1,6 +1,6 @@
 import React from 'react';
-import GamesList from '../GamesList';
 import renderer from 'react-test-renderer';
+import GamesList from '../GamesList';
 
 jest.mock('next/link', () => "Link-mock");
 

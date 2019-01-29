@@ -1,6 +1,6 @@
 import React from 'react';
-import GameDetail from '../GameDetail';
 import renderer from 'react-test-renderer';
+import GameDetail from '../GameDetail';
 
 it('Renders correctly', () => {
     const selectedGame = {
