@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<div
+  className="game-detail"
+>
+  <img
+    alt=""
+    className="game-detail-img"
+    src="selected-game-logo-url"
+  />
+  <span
+    className="game-detail-name"
+  >
+    selected-game-name
+  </span>
+  <div
+    className="game-detail-player"
+  >
+    first-player-id
+  </div>
+  <span
+    className="game-detail-runs"
+  >
+    493
+  </span>
+  <button
+    className="game-detail-video"
+  >
+    <a
+      href="selected-game-video-url"
+    >
+      Video
+    </a>
+  </button>
+</div>
+`;

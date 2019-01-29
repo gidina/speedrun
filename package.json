@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js",
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,12 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
+    "react-test-renderer": "^16.7.0",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "jest": "^24.0.0"
   }
 }

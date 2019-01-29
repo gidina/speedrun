@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<div>
+  <h1
+    className="games-title"
+  >
+    Games
+  </h1>
+  <ul
+    className="games-list"
+  >
+    <li
+      className="game"
+    >
+      <img
+        alt=""
+        className="game-img"
+        src="cover-small-uri"
+      />
+      <Link-mock
+        as="/game/1"
+        href="/game?id=1"
+      >
+        <a
+          className="game-title"
+        >
+          name-international
+        </a>
+      </Link-mock>
+    </li>
+  </ul>
+</div>
+`;
