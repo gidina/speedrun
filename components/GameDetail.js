@@ -1,3 +1,5 @@
+import "./game.css";
+
 const GameDetail = props => {
     const { selectedGame } = props;
     const { name, logoUrl, firstRun } = selectedGame;

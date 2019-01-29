@@ -1,9 +1,8 @@
+import React from "react";
 import { connect } from 'react-redux'
 import { fetchGames } from "../store/actions";
 import { getGames } from "../store/reducers";
 import GamesList from "../components/GamesList";
-
-import "./index.css";
 
 const Home = props => <GamesList {...props} />;
 
