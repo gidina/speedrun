@@ -1,13 +1,13 @@
 import React from "react";
 import { connect } from 'react-redux'
-import { fetchGames } from "../store/actions";
+import { onHomePageEnter } from "../store/actions";
 import { getGames } from "../store/reducers";
 import GamesList from "../components/GamesList";
 
 const Home = props => <GamesList {...props} />;
 
 Home.getInitialProps = async ({ reduxStore }) => {
-    await reduxStore.dispatch(fetchGames());
+    await reduxStore.dispatch(onHomePageEnter());
     return {};
 };
 

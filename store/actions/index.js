@@ -10,7 +10,7 @@ import { areGamesLoaded, getRunsUrl } from "../reducers";
 const fetchGamesSuccess = games => ({ type: FETCH_GAMES_SUCCESS, games });
 const fetchGamesError = error => ({ type: FETCH_GAMES_ERROR, error });
 
-export const fetchGames = () => {
+export const onHomePageEnter = () => {
     return async (dispatch, getState) => {
         
         const games = getState().games;
@@ -51,7 +51,7 @@ export const fetchGamesAndRuns = id => {
     return async (dispatch, getState) => {
         
         if (!areGamesLoaded(getState())) {
-            await dispatch(fetchGames());
+            await dispatch(onHomePageEnter());
         }
 
         const runsUrl = getRunsUrl(getState(), id);
