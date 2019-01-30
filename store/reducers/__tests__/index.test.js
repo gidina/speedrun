@@ -45,45 +45,47 @@ const gamesMock = [
         ]
     }
 ];
-const gameRunsMock = [
-    {
-        id: "game-1",
-        videos: {
-            links: [
+const gameRunsMock = {
+    "game-1": [
+        {
+            id: "run-1",
+            videos: {
+                links: [
+                    {
+                        uri: "link-uri"
+                    }
+                ]
+            },
+            players: [
                 {
-                    uri: "link-uri"
+                    id: "player-1",
+                    name: "player-name"
                 }
-            ]
-        },
-        players: [
-            {
-                id: "player-1",
-                name: "player-name"
+            ],
+            times: {
+                primary: 23
             }
-        ],
-        times: {
-            primary: 23
-        }
-    },
-    {
-        id: "game-2",
-        videos: {
-            links: [
+        },
+        {
+            id: "run-2",
+            videos: {
+                links: [
+                    {
+                        uri: "link-uri-2"
+                    }
+                ]
+            },
+            players: [
                 {
-                    uri: "link-uri-2"
+                    id: "player-2"
                 }
-            ]
-        },
-        players: [
-            {
-                id: "player-2"
+            ],
+            times: {
+                primary: 203
             }
-        ],
-        times: {
-            primary: 203
         }
-    }
-];
+    ]
+};
 
 describe("#getGames", () => {
     const state = {
@@ -228,7 +230,7 @@ describe("#getSelectedGame", () => {
             name: "international-name",
             logoUrl: "cover-small-uri", 
             firstRun: {
-                id: "game-1", 
+                id: "run-1", 
                 players: [
                     {
                         id: "player-1", 
@@ -260,9 +262,17 @@ describe("#getSelectedGame", () => {
     it("returns undefined when the first run of that game doesn't exist", () => {
         const state = {
             games: gamesMock,
-            runs: []
+            runs: {
+                "game-1": []
+            }
         };
         const gameId = "game-1";
+
+        expect(getSelectedGame(state, gameId)).toEqual(undefined);
+    });
+
+    it("returns undefined when the game doesn't have runs", () => {
+        const gameId = "game-2";
 
         expect(getSelectedGame(state, gameId)).toEqual(undefined);
     });

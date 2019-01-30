@@ -16,7 +16,7 @@ export const areGamesLoaded = state => gamesReducer.areGamesLoaded(state.games);
 export const getRunsUrl = (state, id) => gamesReducer.getRunsUrl(state.games, id);
 export const getGameById = (state, id) => gamesReducer.getGameById(state.games, id);
 export const getSelectedGame = (state, id) => {
-    const firstRun = runsReducer.getFirstRun(state.runs);
+    const firstRun = runsReducer.getFirstRunByGameId(state.runs, id);
     const game = gamesReducer.getGameById(state.games, id);
 
     if (!firstRun || !game) {
@@ -30,5 +30,6 @@ export const getSelectedGame = (state, id) => {
         firstRun
     }
 };
+export const areRunsLoadedByGameId = (state, id) => runsReducer.areRunsLoadedByGameId(state.runs, id);
 export const isFetchingGames = state => loadingReducer.isFetchingGames(state.loading);
 export const isFetchingRuns = state => loadingReducer.isFetchingRuns(state.loading);
