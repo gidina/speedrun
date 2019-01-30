@@ -1,3 +1,4 @@
+import React from "react";
 import "./game.css";
 
 const GameDetail = props => {

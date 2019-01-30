@@ -1,32 +1,10 @@
-// import React from "react";
-// import { connect } from 'react-redux'
-// import { fetchGames } from "../store/actions";
-// import { getGames } from "../store/reducers";
-// import GamesList from "../components/GamesList";
-
-// const Home = props => <GamesList {...props} />;
-
-// Home.getInitialProps = async ({ reduxStore }) => {
-//     await reduxStore.dispatch(fetchGames());
-//     return {};
-// };
-
-// const mapStateToProps = (state) => {
-//     return {
-//         games: getGames(state)
-//     }
-// };
-
-// export default connect(mapStateToProps, null)(Home);
-
 import React from "react";
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import renderer from 'react-test-renderer';
 import Home from "../index";
 import { getGames } from "../../store/reducers";
-import { fetchGames } from "../../store/actions";
-
+import { onHomePageEnter } from "../../store/actions";
 
 jest.mock("../../components/GamesList", () => "GamesList-mock");
 jest.mock("../../store/reducers/index");
@@ -56,7 +34,7 @@ const gamesMock = [
 ];
 
 getGames.mockReturnValue(gamesMock);
-fetchGames.mockReturnValue({ type: "DUMMY_FETCH_GAMES" });
+onHomePageEnter.mockReturnValue({ type: "DUMMY_FETCH_GAMES" });
 
 const initialState = {};
 
@@ -81,7 +59,7 @@ it('#getInitialProps', async () => {
         reduxStore: store
     };
     await Home.getInitialProps(context);
-    expect(fetchGames).toHaveBeenCalledTimes(1);
-    expect(fetchGames).toHaveBeenCalledWith(); 
+    expect(onHomePageEnter).toHaveBeenCalledTimes(1);
+    expect(onHomePageEnter).toHaveBeenCalledWith(); 
     expect(store.getActions()).toContainEqual({ type: "DUMMY_FETCH_GAMES" });
 });
