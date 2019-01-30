@@ -4,7 +4,16 @@ import PropTypes from 'prop-types';
 import "./game.css";
 
 const GameDetail = props => {
-    const { selectedGame } = props;
+    const { selectedGame, isLoadingRuns } = props;
+    
+    if (isLoadingRuns) {
+        return <div>Loading...</div>
+    }
+
+    if (!selectedGame) {
+        return <div>Ooops, this game does not exist</div>
+    }
+
     const { name, logoUrl, firstRun } = selectedGame;
 
     if (!firstRun || !firstRun.players) {
@@ -25,5 +34,5 @@ const GameDetail = props => {
 export default GameDetail;
 
 GameDetail.propTypes = {
-    selectedGame: PropTypes.object.isRequired
+    selectedGame: PropTypes.object
 };

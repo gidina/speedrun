@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import * as gamesReducer from "./games";
 import * as runsReducer from "./runs";
+import * as loadingReducer from "./loading";
 
 const rootReducer = combineReducers({
     games: gamesReducer.default,
-    runs: runsReducer.default
+    runs: runsReducer.default,
+    loading: loadingReducer.default
 });
 
 export default rootReducer;
@@ -27,4 +29,6 @@ export const getSelectedGame = (state, id) => {
         logoUrl: game.assets['cover-small'].uri,
         firstRun
     }
-}
+};
+export const isFetchingGames = state => loadingReducer.isFetchingGames(state.loading);
+export const isFetchingRuns = state => loadingReducer.isFetchingRuns(state.loading);
