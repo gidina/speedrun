@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 import "./game.css";
 
 const GameDetail = props => {
@@ -8,7 +10,7 @@ const GameDetail = props => {
     if (!firstRun || !firstRun.players) {
         return null;
     }
-    
+
     const firstPlayer = firstRun.players[0];
 
     return <div className="game-detail">
@@ -21,3 +23,7 @@ const GameDetail = props => {
 };
 
 export default GameDetail;
+
+GameDetail.propTypes = {
+    selectedGame: PropTypes.object.isRequired
+};

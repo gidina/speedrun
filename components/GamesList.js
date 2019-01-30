@@ -1,5 +1,7 @@
 import React from "react";
 import Link from 'next/link';
+import PropTypes from 'prop-types';
+
 import "./index.css";
 
 const GamesList = props => (
@@ -19,3 +21,7 @@ const GamesList = props => (
 );
 
 export default GamesList;
+
+GamesList.propTypes = {
+    games: PropTypes.array.isRequired
+};
