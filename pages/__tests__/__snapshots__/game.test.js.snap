@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders correctly 1`] = `
+<GameDetail-mock
+  dispatch={[Function]}
+  selectedGame={
+    Object {
+      "firstRun": Object {
+        "id": "game-1",
+        "players": Array [
+          Object {
+            "id": "player-1",
+            "name": "player-name",
+          },
+        ],
+        "times": Object {
+          "primary": 23,
+        },
+        "videos": Object {
+          "links": Array [
+            Object {
+              "uri": "link-uri",
+            },
+          ],
+        },
+      },
+      "id": "game-1",
+      "logoUrl": "cover-small-uri",
+      "name": "international-name",
+    }
+  }
+/>
+`;
