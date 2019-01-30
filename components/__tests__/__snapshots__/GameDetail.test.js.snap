@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`If first player doesn't exist on selectedGame.firstRun prop it renders null 1`] = `null`;
+
+exports[`If firstRun doesn't exist on selectedGame prop it renders null 1`] = `null`;
+
 exports[`Renders correctly 1`] = `
 <div
   className="game-detail"

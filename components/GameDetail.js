@@ -4,9 +4,12 @@ import "./game.css";
 const GameDetail = props => {
     const { selectedGame } = props;
     const { name, logoUrl, firstRun } = selectedGame;
-    const firstPlayer = firstRun.players[0];
 
-    if (!firstPlayer || !firstRun) return null;
+    if (!firstRun || !firstRun.players) {
+        return null;
+    }
+    
+    const firstPlayer = firstRun.players[0];
 
     return <div className="game-detail">
         <img className="game-detail-img" alt="" src={logoUrl} />
