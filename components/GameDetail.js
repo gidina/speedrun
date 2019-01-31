@@ -34,5 +34,14 @@ const GameDetail = props => {
 export default GameDetail;
 
 GameDetail.propTypes = {
-    selectedGame: PropTypes.object
+    selectedGame: PropTypes.shape({
+        name: PropTypes.string,
+        logoUrl: PropTypes.string,
+        firstRun: PropTypes.shape({
+            players: PropTypes.array,
+            videos: PropTypes.shape({
+                links: PropTypes.array
+            })
+        })
+    })
 };
