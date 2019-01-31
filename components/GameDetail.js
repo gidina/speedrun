@@ -7,11 +7,11 @@ const GameDetail = props => {
     const { selectedGame, isLoadingRuns } = props;
     
     if (isLoadingRuns) {
-        return <div>Loading...</div>
+        return <div>Loading...</div>;
     }
 
     if (!selectedGame) {
-        return <div>Ooops, this game does not exist</div>
+        return <div>Ooops, this game does not exist</div>;
     }
 
     const { name, logoUrl, firstRun } = selectedGame;
@@ -40,7 +40,9 @@ GameDetail.propTypes = {
         firstRun: PropTypes.shape({
             players: PropTypes.array,
             videos: PropTypes.shape({
-                links: PropTypes.array
+                links: PropTypes.arrayOf(PropTypes.shape({
+                    uri: PropTypes.string
+                }))
             })
         })
     })
