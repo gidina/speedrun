@@ -1,6 +1,8 @@
 import App, { Container } from 'next/app';
 import React from 'react';
-import withReduxStore from '../utils/with-redux-store';
+import withReduxStore from '../commons/with-redux-store';
+import { initializeStore } from '../store';
+
 import { Provider } from 'react-redux';
 
 class MyApp extends App {
@@ -16,4 +18,4 @@ class MyApp extends App {
     }
 };
 
-export default withReduxStore(MyApp);
+export default withReduxStore(initializeStore)(MyApp);
