@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import GameDetail from '../GameDetail';
 
-describe.only("GameDetail component", () => {
+describe("GameDetail component", () => {
     it('Renders correctly', () => {
         const selectedGame = {
             id: "game-1", 

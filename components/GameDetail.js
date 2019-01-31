@@ -29,6 +29,7 @@ const GameDetail = props => {
 export default GameDetail;
 
 GameDetail.propTypes = {
+    isLoadingRuns: PropTypes.bool,
     selectedGame: PropTypes.shape({
         name: PropTypes.string,
         logoUrl: PropTypes.string,
