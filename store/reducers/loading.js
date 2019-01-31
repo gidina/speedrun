@@ -25,16 +25,16 @@ const loading = (state = initialState, action) => {
                 ...state,
                 loadingGames: false
             };
+        case FETCH_RUNS_REQUEST:
+            return {
+                ...state,
+                loadingRuns: true
+            };
         case FETCH_RUNS_SUCCESS:
         case FETCH_RUNS_ERROR:
             return {
                 ...state,
                 loadingRuns: false
-            };
-        case FETCH_RUNS_REQUEST:
-            return {
-                ...state,
-                loadingRuns: true
             };
         default:
             return state;
