@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import "./game.css";
 
 const GameDetail = props => {
-    const { selectedGame, isLoadingRuns } = props;
+    const { isLoadingRuns, selectedGame } = props;
     
     if (isLoadingRuns) {
         return <div>Loading...</div>;
@@ -15,19 +15,14 @@ const GameDetail = props => {
     }
 
     const { name, logoUrl, firstRun } = selectedGame;
-
-    if (!firstRun || !firstRun.players) {
-        return null;
-    }
-
-    const firstPlayer = firstRun.players[0];
+    const { firstPlayerName, timePlayed, videoUrl } = firstRun;
 
     return <div className="game-detail">
         <img className="game-detail-img" alt="" src={logoUrl} />
         <span className="game-detail-name">{name}</span>
-        <div className="game-detail-player">{firstPlayer.id}</div>
-        <span className="game-detail-runs">{firstRun.times.primary_t}</span>
-        <button className="game-detail-video"><a href={firstRun.videos.links[0].uri}>Video</a></button>
+        <div className="game-detail-player">{firstPlayerName}</div>
+        <span className="game-detail-runs">{timePlayed}</span>
+        <button className="game-detail-video"><a href={videoUrl}>Video</a></button>
     </div>
 };
 
@@ -38,12 +33,9 @@ GameDetail.propTypes = {
         name: PropTypes.string,
         logoUrl: PropTypes.string,
         firstRun: PropTypes.shape({
-            players: PropTypes.array,
-            videos: PropTypes.shape({
-                links: PropTypes.arrayOf(PropTypes.shape({
-                    uri: PropTypes.string
-                }))
-            })
+            firstPlayerName: PropTypes.string,
+            timePlayed: PropTypes.integer,
+            videoUrl: PropTypes.string
         })
     })
 };

@@ -2,64 +2,36 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import GameDetail from '../GameDetail';
 
-it('Renders correctly', () => {
-    const selectedGame = {
-        name: "selected-game-name",
-        logoUrl: "selected-game-logo-url",
-        firstRun: {
-            players: [
-                {
-                    id: "first-player-id"
-                }
-            ],
-            videos: {
-                links: [
-                    {
-                        uri: "selected-game-video-url"
-                    }
-                ]
-            },
-            times: {
-                primary_t: 493
-            }
-        }
-    };
-    const tree = renderer
-        .create(<GameDetail selectedGame={selectedGame} />)
-        .toJSON();
-    expect(tree).toMatchSnapshot();
-});
+describe.only("GameDetail component", () => {
+    it('Renders correctly', () => {
+        const selectedGame = {
+            id: "game-1", 
+            name: "international-name",
+            logoUrl: "cover-small-uri", 
+            firstRun: {
+                firstPlayerName: "player-name",
+                timePlayed: 23,
+                videoUrl: "link-uri",
 
-it("If firstRun doesn't exist on selectedGame prop it renders null", () => {
-    const selectedGame = {
-        name: "selected-game-name",
-        logoUrl: "selected-game-logo-url"
-    };
-    const tree = renderer
-        .create(<GameDetail selectedGame={selectedGame} />)
-        .toJSON();
-    expect(tree).toMatchSnapshot();
-});
-
-it("If first player doesn't exist on selectedGame.firstRun prop it renders null", () => {
-    const selectedGame = {
-        name: "selected-game-name",
-        logoUrl: "selected-game-logo-url",
-        firstRun: {
-            videos: {
-                links: [
-                    {
-                        uri: "selected-game-video-url"
-                    }
-                ]
-            },
-            times: {
-                primary_t: 493
             }
-        }
-    };
-    const tree = renderer
-        .create(<GameDetail selectedGame={selectedGame} />)
-        .toJSON();
-    expect(tree).toMatchSnapshot();
+        };
+        const tree = renderer
+            .create(<GameDetail selectedGame={selectedGame} isLoadingRuns={false} />)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+    
+    it("If selectedGame prop doesn't exist it renders a message explaining that game doesn't exist", () => {
+        const tree = renderer
+            .create(<GameDetail isLoadingRuns={false}/>)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+
+    it("If is fetching games or runs, shows a Loading", () => {
+        const tree = renderer
+            .create(<GameDetail isLoadingRuns={true} />)
+            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 });

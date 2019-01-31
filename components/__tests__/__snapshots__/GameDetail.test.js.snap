@@ -1,38 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`If first player doesn't exist on selectedGame.firstRun prop it renders null 1`] = `null`;
+exports[`GameDetail component If is fetching games or runs, shows a Loading 1`] = `
+<div>
+  Loading...
+</div>
+`;
 
-exports[`If firstRun doesn't exist on selectedGame prop it renders null 1`] = `null`;
+exports[`GameDetail component If selectedGame prop doesn't exist it renders a message explaining that game doesn't exist 1`] = `
+<div>
+  Ooops, this game does not exist
+</div>
+`;
 
-exports[`Renders correctly 1`] = `
+exports[`GameDetail component Renders correctly 1`] = `
 <div
   className="game-detail"
 >
   <img
     alt=""
     className="game-detail-img"
-    src="selected-game-logo-url"
+    src="cover-small-uri"
   />
   <span
     className="game-detail-name"
   >
-    selected-game-name
+    international-name
   </span>
   <div
     className="game-detail-player"
   >
-    first-player-id
+    player-name
   </div>
   <span
     className="game-detail-runs"
   >
-    493
+    23
   </span>
   <button
     className="game-detail-video"
   >
     <a
-      href="selected-game-video-url"
+      href="link-uri"
     >
       Video
     </a>
