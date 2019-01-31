@@ -91,48 +91,52 @@ const gameRunsMock = {
 };
 
 describe("#getGames", () => {
-    const state = {
-        games: gamesMock
-    };
-    
     it("return all games", () => {
+        const state = {
+            games: gamesMock
+        };
         const expectedGames = [
             {
                 id: "game-1", 
-                names: { 
-                    international: "international-name"
-                }, 
-                assets: { 
-                    "cover-small" : { 
-                        uri: "cover-small-uri"
-                    }
-                },
-                links: [
-                    { 
-                        rel: "self", 
-                        uri: "lin-uri-self" 
-                    },
-                    { 
-                        rel: "runs", 
-                        uri: "link-uri-runs" }
-                ]
+                name: "international-name",
+                logoUrl: "cover-small-uri"
             },
             {
                 id: "game-2", 
-                names: { 
-                    international: "international-name-2"
-                }, 
-                assets: { 
-                    "cover-small" : { 
-                        uri: "cover-small-uri-2"
-                    }
-                },
-                links: [
-                    { 
-                        rel: "levels", 
-                        uri: "lin-uri-levels" 
-                    }
-                ]
+                name: "international-name-2",
+                logoUrl: "cover-small-uri-2"
+            }
+        ];
+    
+        expect(getGames(state)).toEqual(expectedGames);
+    });
+
+    it("return one game left because it is not complete", () => {
+        const incompleteGame = {
+            id: "game-3", 
+            names: { 
+                international: "international-name"
+            }
+        };
+
+        const gamesState = [
+            ...gamesMock,
+            incompleteGame
+        ];
+        const state = {
+            games: gamesState
+        };
+
+        const expectedGames = [
+            {
+                id: "game-1", 
+                name: "international-name",
+                logoUrl: "cover-small-uri"
+            },
+            {
+                id: "game-2", 
+                name: "international-name-2",
+                logoUrl: "cover-small-uri-2"
             }
         ];
     

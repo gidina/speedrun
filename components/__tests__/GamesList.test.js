@@ -7,15 +7,14 @@ jest.mock('next/link', () => "Link-mock");
 it('Renders correctly', () => {
     const games = [
         {
-            id: 1,
-            assets: {
-                'cover-small': {
-                    uri: "cover-small-uri"
-                }
-            },
-            names: {
-                international: "name-international"
-            }
+            id: "game-1", 
+            name: "international-name",
+            logoUrl: "cover-small-uri"
+        },
+        {
+            id: "game-2", 
+            name: "international-name-2",
+            logoUrl: "cover-small-uri-2"
         }
     ];
     const tree = renderer

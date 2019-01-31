@@ -43,7 +43,17 @@ const isValidRun = run => {
     return true;
 };
 
-export const getGames = state => gamesReducer.getGames(state.games);
+export const getGames = state => {
+    const games = gamesReducer.getGames(state.games);
+    const completeGames = games.filter(game => isValidGame(game));
+    return completeGames.map(game => {
+        return {
+            id: game.id,
+            name: game.names.international,
+            logoUrl: game.assets['cover-small'].uri
+        };
+    });
+};
 export const areGamesLoaded = state => gamesReducer.areGamesLoaded(state.games);
 export const getRunsUrl = (state, id) => gamesReducer.getRunsUrl(state.games, id);
 export const getGameById = (state, id) => gamesReducer.getGameById(state.games, id);

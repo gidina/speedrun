@@ -19,13 +19,32 @@ exports[`Renders correctly 1`] = `
         src="cover-small-uri"
       />
       <Link-mock
-        as="/game/1"
-        href="/game?id=1"
+        as="/game/game-1"
+        href="/game?id=game-1"
       >
         <a
           className="game-title"
         >
-          name-international
+          international-name
+        </a>
+      </Link-mock>
+    </li>
+    <li
+      className="game"
+    >
+      <img
+        alt=""
+        className="game-img"
+        src="cover-small-uri-2"
+      />
+      <Link-mock
+        as="/game/game-2"
+        href="/game?id=game-2"
+      >
+        <a
+          className="game-title"
+        >
+          international-name-2
         </a>
       </Link-mock>
     </li>
