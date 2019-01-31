@@ -20,7 +20,7 @@ const isValidGame = game => {
         return false;
     }
 
-    if (!game.assets || !game.assets['cover-smalle']) {
+    if (!game.assets || !game.assets['cover-small']) {
         return false;
     }
 

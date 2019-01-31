@@ -66,7 +66,7 @@ const gameRunsMock = {
                 }
             ],
             times: {
-                primary: 23
+                primary_t: 23
             }
         },
         {
@@ -84,7 +84,7 @@ const gameRunsMock = {
                 }
             ],
             times: {
-                primary: 203
+                primary_t: 203
             }
         }
     ]
@@ -235,23 +235,10 @@ describe("#getSelectedGame", () => {
             name: "international-name",
             logoUrl: "cover-small-uri", 
             firstRun: {
-                id: "run-1", 
-                players: [
-                    {
-                        id: "player-1", 
-                        name: "player-name"
-                    }
-                ], 
-                times: {
-                    primary: 23
-                },
-                videos: {
-                    links: [
-                        {
-                            uri: "link-uri"
-                        }
-                    ]
-                }
+                firstPlayerName: "player-name",
+                timePlayed: 23,
+                videoUrl: "link-uri",
+
             }
         };
 
