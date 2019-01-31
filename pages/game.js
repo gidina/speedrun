@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { fetchGamesAndRuns } from "../store/actions";
+import { onGameDetailPageEnter } from "../store/actions";
 import { getSelectedGame, isFetchingRuns } from "../store/reducers";
 import GameDetail from "../components/GameDetail";
 
@@ -10,9 +10,9 @@ Game.getInitialProps = async ({ req, query, reduxStore }) => {
     const { id } = query;
 
     if (req) {
-        await reduxStore.dispatch(fetchGamesAndRuns(id));
+        await reduxStore.dispatch(onGameDetailPageEnter(id));
     } else {
-        reduxStore.dispatch(fetchGamesAndRuns(id));
+        reduxStore.dispatch(onGameDetailPageEnter(id));
     }
     
     return { id };    

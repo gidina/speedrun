@@ -49,7 +49,7 @@ const fetchRuns = (id, url) => {
     };
 };
 
-export const fetchGamesAndRuns = id => {
+export const onGameDetailPageEnter = id => {
     return async (dispatch, getState) => {
         
         if (!areGamesLoaded(getState())) {

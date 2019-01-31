@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 import renderer from 'react-test-renderer';
 import Game from "../game";
 import { getSelectedGame } from "../../store/reducers";
-import { fetchGamesAndRuns } from "../../store/actions";
+import { onGameDetailPageEnter } from "../../store/actions";
 
 jest.mock("../../components/GameDetail", () => "GameDetail-mock");
 jest.mock("../../store/reducers/index");
@@ -36,7 +36,7 @@ const selectedGameMock = {
 };
 
 getSelectedGame.mockReturnValue(selectedGameMock);
-fetchGamesAndRuns.mockReturnValue({ type: "DUMMY_FETCH_GAMES" });
+onGameDetailPageEnter.mockReturnValue({ type: "DUMMY_FETCH_GAMES" });
 
 const initialState = {};
 
@@ -65,7 +65,7 @@ it('#getInitialProps', async () => {
         } 
     };
     await Game.getInitialProps(context);
-    expect(fetchGamesAndRuns).toHaveBeenCalledTimes(1);
-    expect(fetchGamesAndRuns).toHaveBeenCalledWith(gameId); 
+    expect(onGameDetailPageEnter).toHaveBeenCalledTimes(1);
+    expect(onGameDetailPageEnter).toHaveBeenCalledWith(gameId); 
     expect(store.getActions()).toContainEqual({ type: "DUMMY_FETCH_GAMES" });
 });

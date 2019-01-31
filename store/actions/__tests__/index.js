@@ -60,7 +60,7 @@ describe("#onHomePageEnter", () => {
   });
 });
 
-describe("#fetchGamesAndRuns", () => {
+describe("#onGameDetailPageEnter", () => {
   const gameId = "game-1";
   it('should create expected actions when games and runs fetch succeed', async () => {
     fetchByUrl.mockResolvedValue("runs");
@@ -77,7 +77,7 @@ describe("#fetchGamesAndRuns", () => {
       { type: types.FETCH_RUNS_SUCCESS, runs: "runs", id: gameId }
     ];
   
-    await store.dispatch(actions.fetchGamesAndRuns(gameId));
+    await store.dispatch(actions.onGameDetailPageEnter(gameId));
 
     expect(fetchGames).toBeCalledTimes(1);
     expect(fetchGames).toHaveBeenCalledWith();
@@ -101,7 +101,7 @@ describe("#fetchGamesAndRuns", () => {
       { type: types.FETCH_RUNS_SUCCESS, runs: "runs", id: gameId }
     ];
   
-    await store.dispatch(actions.fetchGamesAndRuns(gameId));
+    await store.dispatch(actions.onGameDetailPageEnter(gameId));
   
     expect(fetchGames).toBeCalledTimes(1);
     expect(fetchGames).toHaveBeenCalledWith();
@@ -125,7 +125,7 @@ describe("#fetchGamesAndRuns", () => {
       { type: types.FETCH_RUNS_ERROR, error: "error-message" }
     ];
   
-    await store.dispatch(actions.fetchGamesAndRuns(gameId));
+    await store.dispatch(actions.onGameDetailPageEnter(gameId));
   
     expect(fetchGames).toBeCalledTimes(1);
     expect(fetchGames).toHaveBeenCalledWith();
@@ -144,7 +144,7 @@ describe("#fetchGamesAndRuns", () => {
       { type: types.FETCH_RUNS_ERROR, error: "error-message" }
     ];
 
-    await store.dispatch(actions.fetchGamesAndRuns(gameId));
+    await store.dispatch(actions.onGameDetailPageEnter(gameId));
     
     expect(fetchGames).toBeCalledTimes(0);
     expect(fetchByUrl).toBeCalledTimes(1);
@@ -159,11 +159,11 @@ describe("#fetchGamesAndRuns", () => {
 
     const expectedActions = [];
 
-    await store.dispatch(actions.fetchGamesAndRuns(gameId));
+    await store.dispatch(actions.onGameDetailPageEnter(gameId));
     
     expect(fetchGames).toBeCalledTimes(0);
     expect(fetchByUrl).toBeCalledTimes(0);
-    
+
     expect(store.getActions()).toEqual(expectedActions);
   });
 });
