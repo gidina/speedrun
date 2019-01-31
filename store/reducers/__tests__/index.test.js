@@ -226,6 +226,8 @@ describe("#getSelectedGame", () => {
         runs: gameRunsMock
     };
 
+    // In a real world application, all the cases must be tested
+
     it("returns the expected structure when first run and game exist", () => {
         const gameId = "game-1";
         const expectedStructure = {
