@@ -3,7 +3,10 @@ import {
     getGameById,
     areGamesLoaded,
     getRunsUrl,
-    getSelectedGame
+    getSelectedGame,
+    areRunsLoadedByGameId,
+    isFetchingGames,
+    isFetchingRuns
 } from "../index";
 
 const gamesMock = [
@@ -275,5 +278,61 @@ describe("#getSelectedGame", () => {
         const gameId = "game-2";
 
         expect(getSelectedGame(state, gameId)).toEqual(undefined);
+    });
+});
+
+describe("#areRunsLoadedByGameId", () => {
+    const state = {
+        runs: gameRunsMock
+    };
+    
+    it("return true when exist runs for the specified game id", () => {
+        const gameId = "game-1";    
+        expect(areRunsLoadedByGameId(state, gameId)).toEqual(true);
+    });
+
+    it("return false when doesn't exist runs for the specified game id", () => {
+        const gameId = "game-17";    
+        expect(areRunsLoadedByGameId(state, gameId)).toEqual(false);
+    });
+});
+
+describe("#isFetchingGames", () => {
+    it("return true when games request is running", () => {
+        const state = {
+            loading: {
+                loadingGames: true
+            }
+        };
+        expect(isFetchingGames(state)).toEqual(true);
+    });
+
+    it("return false when games request is running", () => {
+        const state = {
+            loading: {
+                loadingGames: false
+            }
+        };
+        expect(isFetchingGames(state)).toEqual(false);
+    });
+});
+
+describe("#isFetchingRuns", () => {
+    it("return true when game runs request is running", () => {
+        const state = {
+            loading: {
+                loadingRuns: true
+            }
+        };
+        expect(isFetchingRuns(state)).toEqual(true);
+    });
+
+    it("return false when game runs request is running", () => {
+        const state = {
+            loading: {
+                loadingRuns: false
+            }
+        };
+        expect(isFetchingRuns(state)).toEqual(false);
     });
 });
