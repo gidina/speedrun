@@ -11,6 +11,10 @@ const GamesList = props => {
         return <div>Loading...</div>;
     }
 
+    if (!games) {
+        return <div>There are no games</div>;
+    }
+
     return (
         <div>
             <h1 className="games-title">Games</h1>
@@ -31,14 +35,10 @@ const GamesList = props => {
 export default GamesList;
 
 GamesList.propTypes = {
-    games: PropTypes.array.isRequired
-};
-
-GamesList.propTypes = {
     isFetchingGames: PropTypes.bool,
     games: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.integer,
         logoUrl: PropTypes.string,
         name: PropTypes.string
-    })).isRequired,
+    })),
 }
