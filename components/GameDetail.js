@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import "./game.css";
+import "./GameDetail.css";
 
 const GameDetail = props => {
     const { isLoadingRuns, selectedGame } = props;

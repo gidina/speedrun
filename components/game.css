@@ -1,52 +1,16 @@
-.game-detail {
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 25% 25% 25% 25%;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    display: grid;
-    width: 50%;
-}
-
-.game-detail-img {
+.game {
+    float: left;
     width: 100%;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 5;
+    margin-top: 1%;
+    background-color: rgba(255, 0, 0, 0.6);
 }
-
-.game-detail-name {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+  
+.game-title {
+    width: 90%;
 }
-
-.game-detail-player {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.game-detail-runs {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 4;
-}
-
-.game-detail-video {
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 4;
-    grid-row-end: 5;
-    justify-self: end;
-    
-    width: 100px;
-    font: bold 11px Arial;
-    text-decoration: none;
-    padding: 2px 6px 2px 6px;
-    background-color: #e7e7e7; 
-    color: black;
+  
+.game-img {
+    width: 10%;
+    padding: 1%;
+    vertical-align: middle;
 }
