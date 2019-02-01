@@ -1,17 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GamesList component If games prop doesn't exist it renders a message explaining that there are no games 1`] = `
-<div>
-  There are no games
-</div>
-`;
-
-exports[`GamesList component If is fetching games, shows a Loading 1`] = `
-<div>
-  Loading...
-</div>
-`;
-
 exports[`GamesList component Renders correctly 1`] = `
 <div>
   <h1
@@ -22,44 +10,12 @@ exports[`GamesList component Renders correctly 1`] = `
   <ul
     className="games-list"
   >
-    <li
-      className="game"
-    >
-      <img
-        alt=""
-        className="game-img"
-        src="cover-small-uri"
-      />
-      <Link-mock
-        as="/game/game-1"
-        href="/game?id=game-1"
-      >
-        <a
-          className="game-title"
-        >
-          international-name
-        </a>
-      </Link-mock>
-    </li>
-    <li
-      className="game"
-    >
-      <img
-        alt=""
-        className="game-img"
-        src="cover-small-uri-2"
-      />
-      <Link-mock
-        as="/game/game-2"
-        href="/game?id=game-2"
-      >
-        <a
-          className="game-title"
-        >
-          international-name-2
-        </a>
-      </Link-mock>
-    </li>
+    <div>
+      Children 1
+    </div>
+    <div>
+      Children 2
+    </div>
   </ul>
 </div>
 `;

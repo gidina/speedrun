@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game component Renders correctly 1`] = `
+<li
+  className="game"
+>
+  <img
+    alt=""
+    className="game-img"
+    src="cover-small-uri"
+  />
+  <a
+    className="game-title"
+    href="/game/game-1"
+    onClick={[Function]}
+  >
+    international-name
+  </a>
+</li>
+`;

@@ -1,32 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Renders correctly 1`] = `
-<GamesList-mock
-  dispatch={[Function]}
-  games={
-    Array [
+exports[`index page If games prop doesn't exist it renders a message explaining that there are no games 1`] = `
+<div>
+  There are no games
+</div>
+`;
+
+exports[`index page If is fetching games, shows a Loading 1`] = `
+<div>
+  Loading...
+</div>
+`;
+
+exports[`index page Renders correctly 1`] = `
+<GamesList-mock>
+  <Game-mock
+    game={
       Object {
-        "assets": Object {
-          "cover-small": Object {
-            "uri": "cover-small-uri",
-          },
-        },
         "id": "game-1",
-        "links": Array [
-          Object {
-            "rel": "self",
-            "uri": "lin-uri-self",
-          },
-          Object {
-            "rel": "runs",
-            "uri": "link-uri-runs",
-          },
-        ],
-        "names": Object {
-          "international": "international-name",
-        },
-      },
-    ]
-  }
-/>
+        "logoUrl": "cover-small-uri",
+        "name": "international-name",
+      }
+    }
+  />
+  <Game-mock
+    game={
+      Object {
+        "id": "game-2",
+        "logoUrl": "cover-small-uri-2",
+        "name": "international-name-2",
+      }
+    }
+  />
+</GamesList-mock>
 `;
