@@ -3,18 +3,17 @@
 exports[`Game component Renders correctly 1`] = `
 <li
   className="game"
+  onClick={[Function]}
 >
   <img
     alt=""
     className="game-img"
     src="cover-small-uri"
   />
-  <a
+  <h3
     className="game-title"
-    href="/game/game-1"
-    onClick={[Function]}
   >
     international-name
-  </a>
+  </h3>
 </li>
 `;
