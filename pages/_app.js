@@ -5,6 +5,8 @@ import { initializeStore } from '../store';
 
 import { Provider } from 'react-redux';
 
+import "./reset.css";
+
 class MyApp extends App {
     render () {
         const { Component, pageProps, reduxStore } = this.props

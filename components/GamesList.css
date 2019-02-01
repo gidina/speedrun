@@ -1,7 +1,13 @@
 .games-title {
     text-transform: uppercase;
+    font-size: 60px;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .games-list {
-    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(413px, 1fr));
+    grid-gap: 10px;
+    padding: 10px;
 }

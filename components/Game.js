@@ -7,12 +7,12 @@ import "./Game.css";
 const Game = props => {
     const { game } = props;
     return (
-        <li className="game">
-            <img alt="" className="game-img" src={game.logoUrl} />
-            <Link as={`/game/${game.id}`} href={`/game?id=${game.id}`}>
-                <a className="game-title">{game.name}</a>
-            </Link>
-        </li>
+        <Link as={`/game/${game.id}`} href={`/game?id=${game.id}`}>
+            <li className="game">
+                <img alt="" className="game-img" src={game.logoUrl} />
+                <h3 className="game-title">{game.name}</h3>
+            </li>
+        </Link>
     );
 };
 
