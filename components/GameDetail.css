@@ -23,6 +23,7 @@
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
+    font-weight: bold;
 }
 
 .game-detail-player {
@@ -46,10 +47,17 @@
     grid-row-end: 5;
 
     padding: 6px 20px 6px 20px;
-    background-color: #e7e7e7; 
+    background-color: #e7e7e7;
+    border-radius: 3px;
 }
 
 .game-detail-video a {
     text-decoration: none;
     color: black;
+}
+
+.game-detail-video:hover {
+    border-color: black;
+    cursor: pointer;
+    font-weight: bold;
 }
