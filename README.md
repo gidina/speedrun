@@ -8,7 +8,7 @@ Also shows the detail of the games, including extra information and game runs.
 **Node.js v10.10 or greater**
 *Previous versions are discouraged and may lead to unexpected behaviour*
 
-##Setup
+## Setup
 You can run some built-in commands:
 
 ### `npm install`
