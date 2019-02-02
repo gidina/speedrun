@@ -6,23 +6,9 @@ exports[`Renders correctly 1`] = `
   selectedGame={
     Object {
       "firstRun": Object {
-        "id": "game-1",
-        "players": Array [
-          Object {
-            "id": "player-1",
-            "name": "player-name",
-          },
-        ],
-        "times": Object {
-          "primary": 23,
-        },
-        "videos": Object {
-          "links": Array [
-            Object {
-              "uri": "link-uri",
-            },
-          ],
-        },
+        "firstPlayerName": "player-name",
+        "timePlayed": 23,
+        "videoUrl": "link-uri",
       },
       "id": "game-1",
       "logoUrl": "cover-small-uri",

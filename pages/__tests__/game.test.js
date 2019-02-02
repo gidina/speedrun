@@ -15,23 +15,9 @@ const selectedGameMock = {
     name: "international-name",
     logoUrl: "cover-small-uri", 
     firstRun: {
-        id: "game-1", 
-        players: [
-            {
-                id: "player-1", 
-                name: "player-name"
-            }
-        ], 
-        times: {
-            primary: 23
-        },
-        videos: {
-            links: [
-                {
-                    uri: "link-uri"
-                }
-            ]
-        }
+        firstPlayerName: "player-name",
+        timePlayed: 23,
+        videoUrl: "link-uri"
     }
 };
 
