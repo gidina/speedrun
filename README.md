@@ -19,17 +19,5 @@ Runs the app in development mode.
 
 Open http://localhost:3000 to view it in the browser.
 
-### `npm run build`
-Builds the app for production to the `.next` folder.
-
-Your app is ready to be deployed.
-
-### `npm run start`
-*It requires to do* `npm run build` *before.*
-
-Runs the app in production mode.
-
-Open http://localhost:3000 to view it in the browser.
-
 ### `npm run test`
 Runs the tests in watch mode.
