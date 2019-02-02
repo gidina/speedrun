@@ -144,44 +144,6 @@ describe("#getGames", () => {
     });
 });
 
-describe("#getGameById", () => {
-    const state = {
-        games: gamesMock
-    };
-    
-    it("return the game with the specified id", () => {
-        const gameId = "game-1";
-        const expectedGame = {
-            id: "game-1", 
-            names: { 
-                international: "international-name"
-            }, 
-            assets: { 
-                "cover-small" : { 
-                    uri: "cover-small-uri"
-                }
-            },
-            links: [
-                { 
-                    rel: "self", 
-                    uri: "lin-uri-self" 
-                },
-                { 
-                    rel: "runs", 
-                    uri: "link-uri-runs" }
-            ]
-        };
-    
-        expect(getGameById(state, gameId)).toEqual(expectedGame);
-    });
-
-    it("returns undefined when the game with specfified id is not found", () => {
-        const gameId = "game-17";
-
-        expect(getGameById(state, gameId)).toEqual(undefined);
-    });
-});
-
 describe("#areGamesLoaded", () => {
     it("returns false when the games are an empty array", () => {
         const state = {

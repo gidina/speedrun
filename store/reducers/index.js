@@ -56,7 +56,6 @@ export const getGames = state => {
 };
 export const areGamesLoaded = state => gamesReducer.areGamesLoaded(state.games);
 export const getRunsUrl = (state, id) => gamesReducer.getRunsUrl(state.games, id);
-export const getGameById = (state, id) => gamesReducer.getGameById(state.games, id);
 export const getSelectedGame = (state, id) => {
     const firstRun = runsReducer.getFirstRunByGameId(state.runs, id);
     const game = gamesReducer.getGameById(state.games, id);
