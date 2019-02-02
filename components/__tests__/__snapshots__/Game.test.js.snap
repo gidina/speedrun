@@ -1,19 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Game component Renders correctly 1`] = `
-<li
-  className="game"
-  onClick={[Function]}
+<Link-mock
+  as="/game/game-1"
+  href="/game?id=game-1"
 >
-  <img
-    alt=""
-    className="game-img"
-    src="cover-small-uri"
-  />
-  <h3
-    className="game-title"
+  <li
+    className="game"
   >
-    international-name
-  </h3>
-</li>
+    <img
+      alt=""
+      className="game-img"
+      src="cover-small-uri"
+    />
+    <h3
+      className="game-title"
+    >
+      international-name
+    </h3>
+  </li>
+</Link-mock>
 `;

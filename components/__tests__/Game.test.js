@@ -2,6 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Game from '../Game';
 
+jest.mock("next/link", () => "Link-mock");
+
 describe("Game component", () => {
     it('Renders correctly', () => {
         const game = {
